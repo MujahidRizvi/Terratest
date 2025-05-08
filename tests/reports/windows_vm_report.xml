@@ -1,0 +1,11 @@
+<testsuite tests="3" failures="0" errors="0" time="0">
+  <testcase classname="Terraform Test" name="1._Verify_Windows_VM_Exists_with_Correct_Configuration">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="Terraform Test" name="2._Verify_Network_Interface_Attached_to_VM">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="Terraform Test" name="3._Verify_Public_IP_Creation_and_Association">
+    <status>PASS</status>
+  </testcase>
+</testsuite>

@@ -1,0 +1,20 @@
+<testsuite tests="5" failures="3" errors="0" time="0">
+  <testcase classname="Terraform Test" name="1._Verify_APIM_Resource_Deployment_and_Configuration">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="Terraform Test" name="2._Verify_App_Insights_and_Log_Analytics_Integration">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="Terraform Test" name="3._Verify_Private_DNS_A_Records_for_APIM_and_Prefixes">
+    <failure message="Missing expected DNS A record for prefix: management" type="error"></failure>
+    <status>FAIL</status>
+  </testcase>
+  <testcase classname="Terraform Test" name="4._Verify_AppInsights_Logger_and_Log_Retention">
+    <failure message="Logger does not appear to be linked with Application Insights" type="error"></failure>
+    <status>FAIL</status>
+  </testcase>
+  <testcase classname="Terraform Test" name="5._Verify_Terraform_Outputs_for_APIM_ID_Name_PrivateIP_FQDN">
+    <failure message="Output key &#39;apim_id&#39; not found" type="error"></failure>
+    <status>FAIL</status>
+  </testcase>
+</testsuite>

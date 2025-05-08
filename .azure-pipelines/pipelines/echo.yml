@@ -1,0 +1,15 @@
+# .azure-pipelines/pipelines/echo.yml
+
+trigger: none
+
+name: Echo_Test
+
+pool:
+  name: agida-adopa
+
+jobs:
+  - job: EchoJob
+    displayName: "Echo Job"
+    steps:
+      - script: echo "✅ The pipeline is running manually!"
+        displayName: "Echo Confirmation"

@@ -1,0 +1,14 @@
+<testsuite tests="4" failures="0" errors="0" time="1.23">
+  <testcase classname="EventHubModuleTests" name="1._Verify_EventHub_Namespace_Creation">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="EventHubModuleTests" name="2._Verify_EventHub_Creation">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="EventHubModuleTests" name="3._Validate_Message_Retention_Constraint">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="EventHubModuleTests" name="4._Verify_Tags_on_EventHub_Namespace">
+    <status>PASS</status>
+  </testcase>
+</testsuite>

@@ -1,0 +1,12 @@
+<testsuite tests="3" failures="1" errors="0" time="1.11">
+  <testcase classname="LogAnalyticsWorkspaceTests" name="1._Verify_Log_Analytics_Workspace_Exists_with_Correct_Properties">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="LogAnalyticsWorkspaceTests" name="2._Verify_Tags_on_Log_Analytics_Workspace">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="LogAnalyticsWorkspaceTests" name="3._Verify_Terraform_Outputs_for_Workspace_Name_and_ID">
+    <failure message="Missing or empty log_analytics_workspace_id" type="failure"></failure>
+    <status>FAIL</status>
+  </testcase>
+</testsuite>

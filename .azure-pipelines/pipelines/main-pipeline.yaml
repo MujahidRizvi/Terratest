@@ -1,0 +1,97 @@
+trigger: none
+
+stages:
+  - stage: Validate
+    displayName: 'Terraform Validate'
+    jobs:
+      - job: ValidateJob
+        displayName: 'Validate Terraform Code'
+        pool:
+          name: agida-adopa
+        steps:
+          - checkout: self
+            persistCredentials: true
+            clean: true
+
+          - script: |
+              echo "Verifying local modules exist:"
+              ls -R terraform/Modules
+            workingDirectory: Azure
+
+          - task: AzureCLI@2
+            displayName: 'Terraform Init & Validate'
+            inputs:
+              azureSubscription: 'AGI-APIECOSYSTEM-IAC-PIPELINESS-SERVICECONNECTION'
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                az account show
+                terraform init -input=false
+                terraform validate
+              workingDirectory: Azure/main
+
+  - stage: Plan
+    displayName: 'Terraform Plan'
+    dependsOn: Validate
+    jobs:
+      - job: PlanJob
+        displayName: 'Verify Planned Resources'
+        pool:
+          name: agida-adopa
+        steps:
+          - checkout: self
+            clean: true
+
+          - task: AzureCLI@2
+            displayName: 'Terraform Plan'
+            inputs:
+              azureSubscription: 'AGI-APIECOSYSTEM-IAC-PIPELINESS-SERVICECONNECTION'
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                az account show
+                terraform init -input=false
+                terraform plan -out=tfplan.binary -var-file="terraform.tfvars"
+              workingDirectory: Azure/main
+
+          - task: PublishPipelineArtifact@1
+            displayName: 'Publish Plan File'
+            inputs:
+              targetPath: '$(System.DefaultWorkingDirectory)/Azure/main/tfplan.binary'
+              artifact: terraform-plan
+              publishLocation: 'pipeline'
+
+  - stage: Apply
+    displayName: 'Terraform Apply'
+    dependsOn: Plan
+    condition: succeeded()
+    jobs:
+      - deployment: ApplyJob
+        displayName: 'Apply Terraform Plan'
+        environment: terraform-approval
+        pool:
+          name: agida-adopa
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+                  clean: true
+
+                - task: DownloadPipelineArtifact@2
+                  displayName: 'Download Plan File'
+                  inputs:
+                    artifact: terraform-plan
+                    path: $(System.DefaultWorkingDirectory)/Azure/main
+
+                - task: AzureCLI@2
+                  displayName: 'Terraform Apply (Auto Approve)'
+                  inputs:
+                    azureSubscription: 'AGI-APIECOSYSTEM-IAC-PIPELINESS-SERVICECONNECTION'
+                    scriptType: bash
+                    scriptLocation: inlineScript
+                    inlineScript: |
+                      az account show
+                      terraform init -input=false
+                      terraform apply -input=false tfplan.binary
+                    workingDirectory: Azure/main

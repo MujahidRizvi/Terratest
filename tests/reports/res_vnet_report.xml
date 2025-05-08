@@ -1,0 +1,14 @@
+<testsuite tests="4" failures="0" errors="0" time="0">
+  <testcase classname="Terraform Test" name="1._Verify_Virtual_Network_Exists_with_Correct_Address_Space_and_Tags">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="Terraform Test" name="2._Verify_Virtual_Network_Peering_from_Spoke_to_Hub">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="Terraform Test" name="3._Verify_Virtual_Network_Peering_from_Hub_to_Spoke">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="Terraform Test" name="4._Verify_Private_DNS_Zone_Virtual_Network_Links_Creation">
+    <status>PASS</status>
+  </testcase>
+</testsuite>

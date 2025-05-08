@@ -1,0 +1,14 @@
+<testsuite tests="4" failures="0" errors="0" time="1.87">
+  <testcase classname="AzureFunctionProcInfraStateBasedTests" name="1._Verify_Resource_Group_Existence_and_Properties">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureFunctionProcInfraStateBasedTests" name="2._Verify_Function_App_Instance">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureFunctionProcInfraStateBasedTests" name="3._Verify_Storage_Account_Existence">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureFunctionProcInfraStateBasedTests" name="4._Verify_Private_Endpoint">
+    <status>PASS</status>
+  </testcase>
+</testsuite>

@@ -1,0 +1,5 @@
+<testsuite tests="1" failures="0" errors="0" time="0">
+  <testcase classname="Terraform Test" name="1._Verify_System_Resource_Group_Existence_and_Properties">
+    <status>PASS</status>
+  </testcase>
+</testsuite>

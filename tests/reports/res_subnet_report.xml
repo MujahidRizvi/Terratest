@@ -1,0 +1,12 @@
+<testsuite tests="3" failures="1" errors="0" time="0">
+  <testcase classname="Terraform Subnet Module" name="1._Verify_Subnet_Exists_with_Correct_Address_Prefix_and_Service_Endpoints">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="Terraform Subnet Module" name="2._Verify_Network_Security_Group_Association_with_Subnet">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="Terraform Subnet Module" name="3._Verify_Terraform_Outputs_for_Subnet_ID_and_Name">
+    <failure message="Output &#39;subnet_id&#39; missing or empty in all state files" type="error"></failure>
+    <status>FAIL</status>
+  </testcase>
+</testsuite>

@@ -1,0 +1,18 @@
+<testsuite tests="5" failures="1" errors="0" time="2.15">
+  <testcase classname="AzureAPIMInfraStateBasedTests" name="1._Verify_Resource_Group_Existence_and_Properties">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureAPIMInfraStateBasedTests" name="2._Verify_APIM_Instance">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureAPIMInfraStateBasedTests" name="3._Verify_APIM_Network_and_Access_Configuration">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureAPIMInfraStateBasedTests" name="4._Verify_Tag_Consistency">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureAPIMInfraStateBasedTests" name="5._Verify_Output_Values">
+    <failure message="Output value &#39;apim_id&#39; not found" type="failure"></failure>
+    <status>FAIL</status>
+  </testcase>
+</testsuite>

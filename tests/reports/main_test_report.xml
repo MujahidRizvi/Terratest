@@ -1,0 +1,41 @@
+<testsuite tests="13" failures="0" errors="0" time="2.15">
+  <testcase classname="AzureInfraTests" name="1._Validate_existence_of_Resource_Group">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureInfraTests" name="2._Validate_Virtual_Network_(VNet)">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureInfraTests" name="3._Validate_Subnet">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureInfraTests" name="4._Validate_Network_Security_Group_(NSG)">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureInfraTests" name="5._Validate_NSG-to-Subnet_Association">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureInfraTests" name="6._Validate_Virtual_Machine_(VM)">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureInfraTests" name="7._Validate_Network_Interface_(NIC)">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureInfraTests" name="8._Validate_Application_Gateway">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureInfraTests" name="9._Validate_Azure_API_Management_(APIM)">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureInfraTests" name="10._Validate_DNS_Zone">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureInfraTests" name="11._Validate_Public_IP_Address">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureInfraTests" name="12._Validate_VNET_peering">
+    <status>PASS</status>
+  </testcase>
+  <testcase classname="AzureInfraTests" name="13._Validate_NSGs&#39;_inbound_and_outbound_rules_must_match">
+    <status>PASS</status>
+  </testcase>
+</testsuite>

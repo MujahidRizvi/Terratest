@@ -1,0 +1,37 @@
+trigger:
+- main # Or your main development branch
+
+pool:
+  vmImage: 'ubuntu-latest' # Or another suitable agent pool
+
+steps:
+- task: GoToolInstaller@0
+  displayName: 'Install Go'
+  inputs:
+    versionSpec: '1.x' # Specify your Go version
+
+- task: UseTerraform@1
+  displayName: 'Use Terraform'
+  inputs:
+    provider: 'azurerm'
+    terraformVersion: 'latest' # Or your required Terraform version
+    workingDirectory: 'Azure/terraform' # Point to your Terraform code directory
+    backendType: 'azurerm' # If you're using AzureRM backend
+    backendServiceArm: 'your-azure-rm-service-connection' # Replace with your Azure service connection name
+    backendAzureRmResourceGroupName: 'your-tfstate-rg' # Replace with your state resource group
+    backendAzureRmStorageAccountName: 'your-tfstate-sa' # Replace with your state storage account
+    backendAzureRmContainerName: 'tfstate' # Replace with your state container name
+    backendAzureRmKey: 'terraform.tfstate' # Replace with your state file name
+
+- script: |
+    cd 'tests'
+    go test -v -timeout 30m -junitreport reports/
+  displayName: 'Run Terratests'
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results'
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'tests/reports/*.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    publishRunAttachments: true

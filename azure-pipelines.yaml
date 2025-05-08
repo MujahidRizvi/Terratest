@@ -1,0 +1,46 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  TEST_DIR: 'Digital Architecture/tests'
+  REPORT_DIR: 'Digital Architecture/tests/reports'
+  REPORT_FILE: 'junit-report.xml'
+
+steps:
+  - task: Bash@3
+    displayName: 'Install Go 1.21'
+    inputs:
+      targetType: 'inline'
+      script: |
+        wget https://golang.org/dl/go1.21.0.linux-amd64.tar.gz
+        sudo tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
+        echo '##vso[task.setvariable variable=GOROOT]/usr/local/go'
+        echo '##vso[task.setvariable variable=PATH]$PATH:/usr/local/go/bin'
+
+  - task: Bash@3
+    displayName: 'Get dependencies'
+    inputs:
+      targetType: 'inline'
+      workingDirectory: '$(TEST_DIR)'
+      script: |
+        /usr/local/go/bin/go mod tidy
+
+  - task: Bash@3
+    displayName: 'Run Go tests and generate JUnit report'
+    inputs:
+      targetType: 'inline'
+      workingDirectory: '$(TEST_DIR)'
+      script: |
+        mkdir -p "$(REPORT_DIR)"
+        /usr/local/go/bin/go test -v ./... -json | /usr/local/go/bin/go-junit-report > "$(REPORT_DIR)/$(REPORT_FILE)"
+
+  - task: PublishTestResults@2
+    displayName: 'Publish JUnit Test Results'
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: '$(REPORT_DIR)/$(REPORT_FILE)'
+      failTaskOnFailedTests: true
+      testRunTitle: 'Go Unit Tests'

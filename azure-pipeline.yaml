@@ -1,14 +1,28 @@
-trigger:
-- main # Or your main development branch
+trigger: 
+ - main
 
 pool:
-  vmImage: 'ubuntu-latest' # Or another suitable agent pool
+   vmImage: 'ubuntu-latest'
 
-steps:
-- task: GoToolInstaller@0
-  displayName: 'Install Go'
+steps: 
+- task: GoTool@0
   inputs:
-    versionSpec: '1.x' # Specify your Go version
+    version: '1.13.5'
+- task: Go@0
+  inputs:
+    command: 'get'
+    arguments: '-d'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+- task: Go@0
+  inputs:
+    command: 'build'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+- task: CopyFiles@2
+  inputs:
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+- task: PublishBuildArtifacts@1
+  inputs:
+     artifactName: drop
 
 - task: UseTerraform@1
   displayName: 'Use Terraform'

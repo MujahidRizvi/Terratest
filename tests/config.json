@@ -1,0 +1,4 @@
+{
+  "environment": "dev",
+  "remote_state_url": "https://agidamainuaentfsa.blob.core.windows.net/tfstate/Dev/global.tfstate?sp=r&st=2025-05-23T07:33:38Z&se=2099-05-23T15:33:38Z&sv=2024-11-04&sr=b&sig=moNU7EuuMZsyi8fIp3kJwj9Awlzx1xvDWnIbgjludLw%3D"
+}
